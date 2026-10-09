@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>California House Price Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="main-container">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="house-icon">
+            🏠
+        </div>
+
+        <div>
+
+            <h1>California House Price Prediction</h1>
+
+            <p>
+                Enter the house details to predict the median house value
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FORM CARD -->
+
+    <div class="form-card">
+
+        <form action="/predict"
+              method="GET"
+              id="predictionForm">
+
+
+            <!-- MedInc -->
+
+            <div class="input-box">
+
+                <div class="icon blue">
+                    💰
+                </div>
+
+                <div class="field">
+
+                    <label for="MedInc">
+                        MedInc
+                    </label>
+
+                    <input
+                        type="number"
+                        step="any"
+                        id="MedInc"
+                        name="MedInc"
+                        placeholder="Enter median income"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- HouseAge -->
+
+            <div class="input-box">
+
+                <div class="icon orange">
+                    🏠
+                </div>
+
+                <div class="field">
+
+                    <label for="HouseAge">
+                        HouseAge
+                    </label>
+
+                    <input
+                        type="number"
+                        step="any"
+                        id="HouseAge"
+                        name="HouseAge"
+                        placeholder="Enter house age"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AveRooms -->
+
+            <div class="input-box">
+
+                <div class="icon purple">
+                    🛏️
+                </div>
+
+                <div class="field">
+
+                    <label for="AveRooms">
+                        AveRooms
+                    </label>
+
+                    <input
+                        type="number"
+                        step="any"
+                        id="AveRooms"
+                        name="AveRooms"
+                        placeholder="Enter average rooms"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AveBedrms -->
+
+            <div class="input-box">
+
+                <div class="icon cyan">
+                    🛏️
+                </div>
+
+                <div class="field">
+
+                    <label for="AveBedrms">
+                        AveBedrms
+                    </label>
+
+                    <input
+                        type="number"
+                        step="any"
+                        id="AveBedrms"
+                        name="AveBedrms"
+                        placeholder="Enter average bedrooms"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Population -->
+
+            <div class="input-box">
+
+                <div class="icon green">
+                    👥
+                </div>
+
+                <div class="field">
+
+                    <label for="Population">
+                        Population
+                    </label>
+
+                    <input
+                        type="number"
+                        step="any"
+                        id="Population"
+                        name="Population"
+                        placeholder="Enter population"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AveOccup -->
+
+            <div class="input-box">
+
+                <div class="icon purple">
+                    👤
+                </div>
+
+                <div class="field">
+
+                    <label for="AveOccup">
+                        AveOccup
+                    </label>
+
+                    <input
+                        type="number"
+                        step="any"
+                        id="AveOccup"
+                        name="AveOccup"
+                        placeholder="Enter average occupancy"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Latitude -->
+
+            <div class="input-box">
+
+                <div class="icon red">
+                    📍
+                </div>
+
+                <div class="field">
+
+                    <label for="Latitude">
+                        Latitude
+                    </label>
+
+                    <input
+                        type="number"
+                        step="any"
+                        id="Latitude"
+                        name="Latitude"
+                        placeholder="Enter latitude"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Longitude -->
+
+            <div class="input-box">
+
+                <div class="icon blue">
+                    ➤
+                </div>
+
+                <div class="field">
+
+                    <label for="Longitude">
+                        Longitude
+                    </label>
+
+                    <input
+                        type="number"
+                        step="any"
+                        id="Longitude"
+                        name="Longitude"
+                        placeholder="Enter longitude"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BUTTON -->
+
+            <div class="button-container">
+
+                <button type="submit">
+
+                    ✨ Predict House Value
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+
+    <!-- RESULT -->
+
+    {% if prediction is defined %}
+
+    <div class="result-card">
+
+        <div class="result-icon">
+            🏠
+        </div>
+
+        <div class="result-content">
+
+            <h3>
+                PREDICTION RESULT
+            </h3>
+
+            <p>
+                The estimated median house value is:
+            </p>
+
+            <div class="prediction-value">
+
+                {{ "%.4f"|format(prediction) }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        <span>Machine Learning</span>
+
+        <span>•</span>
+
+        <span>Flask</span>
+
+        <span>•</span>
+
+        <span>California Housing</span>
+
+    </div>
+
+
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
